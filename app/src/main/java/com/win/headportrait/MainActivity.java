@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
      // 裁剪图片
     protected void cutImage(Uri uri) {
-        //调用系统自带的图片裁切功能（先裁成正方形）
+        //调用系统自带的图片裁切功能（这里裁成正方形）
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         // 设置裁剪
@@ -115,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //如果需要保存或上传没有切割成圆的位图，在这个位置应该可以（没试过）
 
-                bitmap = CircleUtils.toRoundBitmap(bitmap); // 将位图处理成圆形
+                // 将位图处理成圆形（如果不加这行代码则显示正方形的图片）
+                bitmap = CircleUtils.toRoundBitmap(bitmap);
                 images.setImageBitmap(bitmap);
 
                 //也可以在这里与服务器交互或保存位图
